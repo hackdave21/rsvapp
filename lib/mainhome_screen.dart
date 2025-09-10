@@ -3,6 +3,7 @@ import 'package:rvsapp/pages/calendar_screen.dart';
 import 'package:rvsapp/pages/home_screen.dart';
 import 'package:rvsapp/pages/profile_screen.dart';
 import 'package:rvsapp/pages/settings_screen.dart';
+import 'package:heroicons/heroicons.dart';
 
 class MainhomeScreen extends StatefulWidget {
   const MainhomeScreen({super.key});
@@ -21,7 +22,7 @@ class _MainhomeScreenState extends State<MainhomeScreen> {
     SettingsScreen()
   ];
 
-  void _onItemTapped (int index) {
+  void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
     });
@@ -30,29 +31,73 @@ class _MainhomeScreenState extends State<MainhomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
-       body: widgetOptions.elementAt(_selectedIndex),
+      appBar: AppBar(
+        leading: HeroIcon(
+          HeroIcons.bars3BottomLeft,
+          color: const Color.fromARGB(255, 2, 70, 125),
+          size: 34,
+        ),
+        actions: [
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: HeroIcon(
+              HeroIcons.bell,
+              color: const Color.fromARGB(255, 2, 70, 125),
+              size: 34,
+            ),
+          ),
+        ],
+      ),
+      body: widgetOptions.elementAt(_selectedIndex),
       bottomNavigationBar: BottomNavigationBar(
         showSelectedLabels: true,
         showUnselectedLabels: true,
         type: BottomNavigationBarType.fixed,
         selectedItemColor: const Color.fromARGB(255, 2, 70, 125),
         unselectedItemColor: Colors.blueGrey,
-        items: const <BottomNavigationBarItem>[
+        items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: Icon(Icons.home),
+            icon: Image.asset(
+              'assets/home.png',
+              width: 24,
+              height: 24,
+              color: _selectedIndex == 0 
+                  ? const Color.fromARGB(255, 2, 70, 125)
+                  : Colors.blueGrey,
+            ),
             label: 'Home',
           ),
-           BottomNavigationBarItem(
-            icon: Icon(Icons.calendar_month),
+          BottomNavigationBarItem(
+            icon: Image.asset(
+              'assets/calendar.png',
+              width: 24,
+              height: 24,
+              color: _selectedIndex == 1
+                  ? const Color.fromARGB(255, 2, 70, 125)
+                  : Colors.blueGrey,
+            ),
             label: 'Calendrier',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.person),
+            icon: Image.asset(
+              'assets/user.png',
+              width: 24,
+              height: 24,
+              color: _selectedIndex == 2
+                  ? const Color.fromARGB(255, 2, 70, 125)
+                  : Colors.blueGrey,
+            ),
             label: 'Profil',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.settings),
+            icon: Image.asset(
+              'assets/setting.png',
+              width: 24,
+              height: 24,
+              color: _selectedIndex == 3
+                  ? const Color.fromARGB(255, 2, 70, 125)
+                  : Colors.blueGrey,
+            ),
             label: 'Paramètres',
           ),
         ],
