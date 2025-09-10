@@ -3,7 +3,6 @@ import 'package:rvsapp/pages/calendar_screen.dart';
 import 'package:rvsapp/pages/home_screen.dart';
 import 'package:rvsapp/pages/profile_screen.dart';
 import 'package:rvsapp/pages/settings_screen.dart';
-import 'package:heroicons/heroicons.dart';
 
 class MainhomeScreen extends StatefulWidget {
   const MainhomeScreen({super.key});
@@ -31,23 +30,6 @@ class _MainhomeScreenState extends State<MainhomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        leading: HeroIcon(
-          HeroIcons.bars3BottomLeft,
-          color: const Color.fromARGB(255, 2, 70, 125),
-          size: 34,
-        ),
-        actions: [
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: HeroIcon(
-              HeroIcons.bell,
-              color: const Color.fromARGB(255, 2, 70, 125),
-              size: 34,
-            ),
-          ),
-        ],
-      ),
       body: widgetOptions.elementAt(_selectedIndex),
       bottomNavigationBar: BottomNavigationBar(
         showSelectedLabels: true,
@@ -63,7 +45,7 @@ class _MainhomeScreenState extends State<MainhomeScreen> {
               height: 24,
               color: _selectedIndex == 0 
                   ? const Color.fromARGB(255, 2, 70, 125)
-                  : Colors.blueGrey,
+                  : Colors.black38,
             ),
             label: 'Home',
           ),
@@ -74,7 +56,7 @@ class _MainhomeScreenState extends State<MainhomeScreen> {
               height: 24,
               color: _selectedIndex == 1
                   ? const Color.fromARGB(255, 2, 70, 125)
-                  : Colors.blueGrey,
+                  : Colors.black38,
             ),
             label: 'Calendrier',
           ),
@@ -85,7 +67,7 @@ class _MainhomeScreenState extends State<MainhomeScreen> {
               height: 24,
               color: _selectedIndex == 2
                   ? const Color.fromARGB(255, 2, 70, 125)
-                  : Colors.blueGrey,
+                  : Colors.black38,
             ),
             label: 'Profil',
           ),
@@ -96,7 +78,7 @@ class _MainhomeScreenState extends State<MainhomeScreen> {
               height: 24,
               color: _selectedIndex == 3
                   ? const Color.fromARGB(255, 2, 70, 125)
-                  : Colors.blueGrey,
+                  : Colors.black38,
             ),
             label: 'Paramètres',
           ),
