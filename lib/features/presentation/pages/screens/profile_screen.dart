@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:heroicons/heroicons.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:image_cropper/image_cropper.dart';
+import 'package:permission_handler/permission_handler.dart';
 import 'package:rvsapp/core/themes/app_themes.dart';
 import 'package:rvsapp/core/themes/text_styles.dart';
 import 'package:rvsapp/features/presentation/widgets/custom_snackbar.dart';
@@ -23,25 +24,47 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
   final ImagePicker _imagePicker = ImagePicker();
 
-  Future<void> _pickImage(ImageSource source) async {
-    try {
-      final XFile? pickedFile = await _imagePicker.pickImage(source: source);
-      
-      if (pickedFile != null) {
-        // Rogner l'image
-        final File? croppedFile = await _cropImage(File(pickedFile.path));
-        
-        if (croppedFile != null) {
-          setState(() {
-            _profileImage = croppedFile;
-          });
-          CustomSnackbar.showSuccess(context, 'Photo de profil mise à jour');
-        }
+  Future<bool> _requestPermission(ImageSource source) async {
+  if (source == ImageSource.camera) {
+    return await Permission.camera.request().isGranted;
+  } else {
+    if (Platform.isAndroid) {
+      if (await Permission.photos.isGranted || await Permission.storage.isGranted) {
+        return true;
       }
-    } catch (e) {
-      CustomSnackbar.showError(context, 'Erreur lors de la sélection de l\'image');
+      final photos = await Permission.photos.request();
+      final storage = await Permission.storage.request();
+      return photos.isGranted || storage.isGranted;
+    } else {
+      return await Permission.photos.request().isGranted;
     }
   }
+}
+
+  Future<void> _pickImage(ImageSource source) async {
+  try {
+    final granted = await _requestPermission(source);
+    if (!granted) {
+      CustomSnackbar.showError(context, "Permission refusée");
+      return;
+    }
+
+    final XFile? pickedFile = await _imagePicker.pickImage(source: source);
+
+    if (pickedFile != null) {
+      final File? croppedFile = await _cropImage(File(pickedFile.path));
+      if (croppedFile != null) {
+        setState(() {
+          _profileImage = croppedFile;
+        });
+        CustomSnackbar.showSuccess(context, 'Photo de profil mise à jour');
+      }
+    }
+  } catch (e) {
+    CustomSnackbar.showError(context, "Erreur : $e");
+  }
+}
+
 
 Future<File?> _cropImage(File imageFile) async {
   final CroppedFile? croppedFile = await ImageCropper().cropImage(
