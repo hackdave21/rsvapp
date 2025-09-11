@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:rvsapp/core/themes/app_themes.dart';
 import 'package:rvsapp/features/presentation/pages/screens/calendar_screen.dart';
 import 'package:rvsapp/features/presentation/pages/screens/home_screen.dart';
 import 'package:rvsapp/features/presentation/pages/screens/profile_screen.dart';
@@ -32,12 +33,20 @@ class _MainhomeScreenState extends State<MainhomeScreen> {
     return Scaffold(
       body: widgetOptions.elementAt(_selectedIndex),
       bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Colors.white,
+        backgroundColor: AppTheme.white,
         showSelectedLabels: true,
         showUnselectedLabels: true,
         type: BottomNavigationBarType.fixed,
-        selectedItemColor: const Color.fromARGB(255, 2, 70, 125),
-        unselectedItemColor: Colors.black,
+        selectedItemColor: AppTheme.primaryColor,
+        unselectedItemColor: AppTheme.grey600,
+        selectedLabelStyle: TextStyle(
+          fontSize: 12,
+          fontWeight: FontWeight.w500,
+        ),
+        unselectedLabelStyle: TextStyle(
+          fontSize: 12,
+          fontWeight: FontWeight.w400,
+        ),
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Image.asset(
@@ -45,10 +54,10 @@ class _MainhomeScreenState extends State<MainhomeScreen> {
               width: 24,
               height: 24,
               color: _selectedIndex == 0 
-                  ? const Color.fromARGB(255, 2, 70, 125)
-                  : Colors.black,
+                  ? AppTheme.primaryColor
+                  : AppTheme.grey600,
             ),
-            label: 'Home',
+            label: 'Accueil',
           ),
           BottomNavigationBarItem(
             icon: Image.asset(
@@ -56,8 +65,8 @@ class _MainhomeScreenState extends State<MainhomeScreen> {
               width: 24,
               height: 24,
               color: _selectedIndex == 1
-                  ? const Color.fromARGB(255, 2, 70, 125)
-                  : Colors.black,
+                  ? AppTheme.primaryColor
+                  : AppTheme.grey600,
             ),
             label: 'Calendrier',
           ),
@@ -67,8 +76,8 @@ class _MainhomeScreenState extends State<MainhomeScreen> {
               width: 24,
               height: 24,
               color: _selectedIndex == 2
-                  ? const Color.fromARGB(255, 2, 70, 125)
-                  : Colors.black,
+                  ? AppTheme.primaryColor
+                  : AppTheme.grey600,
             ),
             label: 'Profil',
           ),
@@ -78,8 +87,8 @@ class _MainhomeScreenState extends State<MainhomeScreen> {
               width: 24,
               height: 24,
               color: _selectedIndex == 3
-                  ? const Color.fromARGB(255, 2, 70, 125)
-                  : Colors.black,
+                  ? AppTheme.primaryColor
+                  : AppTheme.grey600,
             ),
             label: 'Paramètres',
           ),

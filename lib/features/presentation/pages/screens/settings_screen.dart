@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:rvsapp/core/themes/app_themes.dart';
+import 'package:rvsapp/core/themes/text_styles.dart';
+import 'package:rvsapp/shared/widgets/custom_snackbar.dart'; 
 
 class SettingsScreen extends StatefulWidget {
   const SettingsScreen({super.key});
@@ -14,7 +17,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: AppTheme.white,
       body: Padding(
         padding: const EdgeInsets.all(20.0),
         child: SingleChildScrollView(
@@ -22,11 +25,27 @@ class _SettingsScreenState extends State<SettingsScreen> {
             children: <Widget>[
               const SizedBox(height: 100),
 
+              // Titre de la page
+              Text(
+                'Paramètres',
+                style: TextStyles.headlineLarge.copyWith(
+                  color: AppTheme.primaryColor,
+                ),
+              ),
+              const SizedBox(height: 30),
+
               // Container des paramètres
               Container(
                 decoration: BoxDecoration(
-                  color: Colors.grey.shade100,
+                  color: AppTheme.grey100,
                   borderRadius: BorderRadius.circular(15),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withOpacity(0.1),
+                      blurRadius: 10,
+                      offset: const Offset(0, 4),
+                    ),
+                  ],
                 ),
                 child: Padding(
                   padding: const EdgeInsets.all(15.0),
@@ -34,21 +53,21 @@ class _SettingsScreenState extends State<SettingsScreen> {
                     children: [
                       // Historique
                       ListTile(
-                        iconColor: Color.fromARGB(255, 2, 70, 125),
+                        iconColor: AppTheme.primaryColor,
                         leading: const Icon(Icons.history),
-                        title: const Text(
+                        title: Text(
                           'Historique',
-                          style: TextStyle(
-                            fontSize: 16,
-                            color: Colors.black87,
+                          style: TextStyles.titleMedium.copyWith(
+                            color: AppTheme.grey900,
                           ),
                         ),
-                        trailing: const Icon(Icons.arrow_forward_ios, size: 16),
+                        trailing: Icon(
+                          Icons.arrow_forward_ios, 
+                          size: 16,
+                          color: AppTheme.grey600,
+                        ),
                         onTap: () {
-                          // Navigation vers l'historique
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            const SnackBar(content: Text('Historique ouvert'))
-                          );
+                          CustomSnackbar.showInfo(context, 'Historique ouvert');
                         },
                       ),
                       
@@ -56,21 +75,21 @@ class _SettingsScreenState extends State<SettingsScreen> {
                       
                       // Notifications
                       ListTile(
-                        iconColor: Color.fromARGB(255, 2, 70, 125),
+                        iconColor: AppTheme.primaryColor,
                         leading: Icon(isNotificationEnabled
                             ? Icons.notifications_active
                             : Icons.notifications_off),
-                        title: const Text(
+                        title: Text(
                           'Notifications',
-                          style: TextStyle(
-                            fontSize: 16,
-                            color: Colors.black87,
+                          style: TextStyles.titleMedium.copyWith(
+                            color: AppTheme.grey900,
                           ),
                         ),
                         trailing: Switch(
                           value: isNotificationEnabled,
                           onChanged: _toggleNotifications,
-                          activeColor: Color.fromARGB(255, 2, 70, 125),
+                          activeColor: AppTheme.primaryColor,
+                          activeTrackColor: AppTheme.primaryColor.withOpacity(0.5),
                         ),
                       ),
                       
@@ -78,16 +97,19 @@ class _SettingsScreenState extends State<SettingsScreen> {
                       
                       // Langue
                       ListTile(
-                        iconColor: Color.fromARGB(255, 2, 70, 125),
+                        iconColor: AppTheme.primaryColor,
                         leading: const Icon(Icons.language),
-                        title: const Text(
+                        title: Text(
                           'Langue',
-                          style: TextStyle(
-                            fontSize: 16,
-                            color: Colors.black87,
+                          style: TextStyles.titleMedium.copyWith(
+                            color: AppTheme.grey900,
                           ),
                         ),
-                        trailing: const Icon(Icons.arrow_forward_ios, size: 16),
+                        trailing: Icon(
+                          Icons.arrow_forward_ios, 
+                          size: 16,
+                          color: AppTheme.grey600,
+                        ),
                         onTap: () {
                           _showLanguageDialog();
                         },
@@ -97,20 +119,21 @@ class _SettingsScreenState extends State<SettingsScreen> {
                       
                       // Politique de confidentialité
                       ListTile(
-                        iconColor: Color.fromARGB(255, 2, 70, 125),
+                        iconColor: AppTheme.primaryColor,
                         leading: const Icon(Icons.privacy_tip),
-                        title: const Text(
+                        title: Text(
                           'Politique de confidentialité',
-                          style: TextStyle(
-                            fontSize: 16,
-                            color: Colors.black87,
+                          style: TextStyles.titleMedium.copyWith(
+                            color: AppTheme.grey900,
                           ),
                         ),
-                        trailing: const Icon(Icons.arrow_forward_ios, size: 16),
+                        trailing: Icon(
+                          Icons.arrow_forward_ios, 
+                          size: 16,
+                          color: AppTheme.grey600,
+                        ),
                         onTap: () {
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            const SnackBar(content: Text('Politique de confidentialité'))
-                          );
+                          CustomSnackbar.showInfo(context, 'Politique de confidentialité');
                         },
                       ),
                       
@@ -118,21 +141,21 @@ class _SettingsScreenState extends State<SettingsScreen> {
                       
                       // Mode sombre
                       ListTile(
-                        iconColor: Color.fromARGB(255, 2, 70, 125),
+                        iconColor: AppTheme.primaryColor,
                         leading: Icon(
                           isDarkModeEnabled ? Icons.dark_mode : Icons.light_mode,
                         ),
-                        title: const Text(
+                        title: Text(
                           'Mode sombre',
-                          style: TextStyle(
-                            fontSize: 16,
-                            color: Colors.black87,
+                          style: TextStyles.titleMedium.copyWith(
+                            color: AppTheme.grey900,
                           ),
                         ),
                         trailing: Switch(
                           value: isDarkModeEnabled,
                           onChanged: _toggleDarkMode,
-                          activeColor: Color.fromARGB(255, 2, 70, 125),
+                          activeColor: AppTheme.primaryColor,
+                          activeTrackColor: AppTheme.primaryColor.withOpacity(0.5),
                         ),
                       ),
                       
@@ -140,16 +163,19 @@ class _SettingsScreenState extends State<SettingsScreen> {
                       
                       // À propos
                       ListTile(
-                        iconColor: Color.fromARGB(255, 2, 70, 125),
+                        iconColor: AppTheme.primaryColor,
                         leading: const Icon(Icons.info_outline),
-                        title: const Text(
+                        title: Text(
                           'À propos',
-                          style: TextStyle(
-                            fontSize: 16,
-                            color: Colors.black87,
+                          style: TextStyles.titleMedium.copyWith(
+                            color: AppTheme.grey900,
                           ),
                         ),
-                        trailing: const Icon(Icons.arrow_forward_ios, size: 16),
+                        trailing: Icon(
+                          Icons.arrow_forward_ios, 
+                          size: 16,
+                          color: AppTheme.grey600,
+                        ),
                         onTap: () {
                           _showAboutDialog();
                         },
@@ -159,20 +185,21 @@ class _SettingsScreenState extends State<SettingsScreen> {
                       
                       // Aide et support
                       ListTile(
-                        iconColor: Color.fromARGB(255, 2, 70, 125),
+                        iconColor: AppTheme.primaryColor,
                         leading: const Icon(Icons.help_outline),
-                        title: const Text(
+                        title: Text(
                           'Aide et support',
-                          style: TextStyle(
-                            fontSize: 16,
-                            color: Colors.black87,
+                          style: TextStyles.titleMedium.copyWith(
+                            color: AppTheme.grey900,
                           ),
                         ),
-                        trailing: const Icon(Icons.arrow_forward_ios, size: 16),
+                        trailing: Icon(
+                          Icons.arrow_forward_ios, 
+                          size: 16,
+                          color: AppTheme.grey600,
+                        ),
                         onTap: () {
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            const SnackBar(content: Text('Page d\'aide'))
-                          );
+                          CustomSnackbar.showInfo(context, 'Page d\'aide');
                         },
                       ),
                     ],
@@ -192,7 +219,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
       height: 0.5,
       margin: const EdgeInsets.symmetric(vertical: 8.0),
       decoration: BoxDecoration(
-        color: Colors.grey.withOpacity(0.3),
+        color: AppTheme.grey400.withOpacity(0.3),
         borderRadius: BorderRadius.circular(12),
       ),
     );
@@ -202,10 +229,9 @@ class _SettingsScreenState extends State<SettingsScreen> {
     setState(() {
       isDarkModeEnabled = value;
     });
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text(value ? 'Mode sombre activé' : 'Mode sombre désactivé'),
-      ),
+    CustomSnackbar.showSuccess(
+      context, 
+      value ? 'Mode sombre activé' : 'Mode sombre désactivé'
     );
   }
 
@@ -213,10 +239,9 @@ class _SettingsScreenState extends State<SettingsScreen> {
     setState(() {
       isNotificationEnabled = value;
     });
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text(value ? 'Notifications activées' : 'Notifications désactivées'),
-      ),
+    CustomSnackbar.showSuccess(
+      context, 
+      value ? 'Notifications activées' : 'Notifications désactivées'
     );
   }
 
@@ -225,26 +250,33 @@ class _SettingsScreenState extends State<SettingsScreen> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: const Text('Choisir la langue'),
+          title: Text(
+            'Choisir la langue',
+            style: TextStyles.headlineSmall.copyWith(
+              color: AppTheme.primaryColor,
+            ),
+          ),
           content: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
               ListTile(
-                title: const Text('Français'),
+                title: Text(
+                  'Français',
+                  style: TextStyles.bodyLarge,
+                ),
                 onTap: () {
                   Navigator.of(context).pop();
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(content: Text('Langue: Français'))
-                  );
+                  CustomSnackbar.showSuccess(context, 'Langue: Français');
                 },
               ),
               ListTile(
-                title: const Text('English'),
+                title: Text(
+                  'English',
+                  style: TextStyles.bodyLarge,
+                ),
                 onTap: () {
                   Navigator.of(context).pop();
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(content: Text('Language: English'))
-                  );
+                  CustomSnackbar.showSuccess(context, 'Language: English');
                 },
               ),
             ],
@@ -259,11 +291,22 @@ class _SettingsScreenState extends State<SettingsScreen> {
       context: context,
       applicationName: 'Mon App',
       applicationVersion: '1.0.0',
-      applicationIcon: const Icon(Icons.apps),
+      applicationIcon: Icon(
+        Icons.apps,
+        color: AppTheme.primaryColor,
+      ),
       children: [
-        const Text('Cette application a été développée avec Flutter.'),
+        Text(
+          'Cette application a été développée avec Flutter.',
+          style: TextStyles.bodyMedium,
+        ),
         const SizedBox(height: 10),
-        const Text('© 2024 Mon App. Tous droits réservés.'),
+        Text(
+          '© 2024 Mon App. Tous droits réservés.',
+          style: TextStyles.bodySmall.copyWith(
+            color: AppTheme.grey600,
+          ),
+        ),
       ],
     );
   }
