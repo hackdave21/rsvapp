@@ -1,8 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:rvsapp/core/themes/app_themes.dart';
 import 'package:rvsapp/features/presentation/pages/onboarding_screen.dart';
+import 'package:provider/provider.dart';
+import 'package:rvsapp/shared/providers/theme_provider.dart';
 
-void main() {
-  runApp(const MyApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  
+  runApp(
+    ChangeNotifierProvider(
+      create: (_) => ThemeProvider(),
+      child: MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -10,9 +20,17 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home:OnboardingScreen(),
-      debugShowCheckedModeBanner: false,
+    return Consumer<ThemeProvider>(
+      builder: (context, themeProvider, _) {
+        return MaterialApp(
+          title: 'KING DAVE APP',
+          theme: AppTheme.lightTheme,
+          darkTheme: AppTheme.darkTheme,
+          themeMode: themeProvider.themeMode,
+          home: OnboardingScreen(),
+          debugShowCheckedModeBanner: false,
+        );
+      },
     );
   }
 }
