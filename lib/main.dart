@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:rvsapp/core/themes/app_themes.dart';
-import 'package:rvsapp/features/presentation/pages/onboarding_screen.dart';
 import 'package:provider/provider.dart';
+import 'package:rvsapp/features/presentation/pages/splash_screen.dart';
 import 'package:rvsapp/shared/providers/theme_provider.dart';
 
 void main() async {
@@ -24,10 +24,20 @@ class MyApp extends StatelessWidget {
       builder: (context, themeProvider, _) {
         return MaterialApp(
           title: 'KING DAVE APP',
-          theme: AppTheme.lightTheme,
-          darkTheme: AppTheme.darkTheme,
+          theme: ThemeData.light().copyWith(
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: AppTheme.primaryColor,
+          brightness: Brightness.light,
+        ),
+      ),
+      darkTheme: ThemeData.dark().copyWith(
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: AppTheme.primaryColor,
+          brightness: Brightness.dark,
+        ),
+      ),
           themeMode: themeProvider.themeMode,
-          home: OnboardingScreen(),
+          home: SplashScreen(),
           debugShowCheckedModeBanner: false,
         );
       },
