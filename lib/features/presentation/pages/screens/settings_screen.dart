@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:rvsapp/core/themes/app_themes.dart';
 import 'package:rvsapp/core/themes/text_styles.dart';
-import 'package:rvsapp/shared/widgets/custom_snackbar.dart'; 
+import 'package:rvsapp/features/presentation/widgets/custom_snackbar.dart'; 
 
 class SettingsScreen extends StatefulWidget {
   const SettingsScreen({super.key});

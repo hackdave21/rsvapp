@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:rvsapp/core/themes/app_themes.dart';
 import 'package:rvsapp/core/themes/text_styles.dart';
-import 'package:rvsapp/features/presentation/pages/mainhome_screen.dart';
+import 'package:rvsapp/features/presentation/pages/auth/registerpage.dart';
 
 class OnboardingScreen extends StatelessWidget {
   const OnboardingScreen({super.key});
@@ -76,7 +76,7 @@ class OnboardingScreen extends StatelessWidget {
                           onPressed: () {
                             Navigator.pushReplacement(
                               context,
-                              MaterialPageRoute(builder: (context) => const MainhomeScreen()),
+                              MaterialPageRoute(builder: (context) => const RegisterScreen()),
                             );
                           },
                           style: ElevatedButton.styleFrom(
