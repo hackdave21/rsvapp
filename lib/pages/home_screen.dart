@@ -8,9 +8,10 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
        appBar: AppBar(
+        backgroundColor: const Color.fromARGB(255, 2, 70, 125),
         leading: HeroIcon(
           HeroIcons.bars3BottomLeft,
-          color: const Color.fromARGB(255, 2, 70, 125),
+          color: Colors.white,
           size: 34,
         ),
         actions: [
@@ -18,7 +19,7 @@ class HomeScreen extends StatelessWidget {
             padding: const EdgeInsets.all(8.0),
             child: HeroIcon(
               HeroIcons.bell,
-              color: const Color.fromARGB(255, 2, 70, 125),
+              color: Colors.white,
               size: 34,
             ),
           ),

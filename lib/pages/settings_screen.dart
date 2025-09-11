@@ -20,19 +20,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
         child: SingleChildScrollView(
           child: Column(
             children: <Widget>[
-              const SizedBox(height: 20),
-
-              // Titre
-              const Text(
-                'Paramètres',
-                style: TextStyle(
-                  fontSize: 28,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.black87,
-                ),
-              ),
-              
-              const SizedBox(height: 30),
+              const SizedBox(height: 100),
 
               // Container des paramètres
               Container(
@@ -46,7 +34,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                     children: [
                       // Historique
                       ListTile(
-                        iconColor: Colors.blue,
+                        iconColor: Color.fromARGB(255, 2, 70, 125),
                         leading: const Icon(Icons.history),
                         title: const Text(
                           'Historique',
@@ -68,7 +56,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                       
                       // Notifications
                       ListTile(
-                        iconColor: Colors.blue,
+                        iconColor: Color.fromARGB(255, 2, 70, 125),
                         leading: Icon(isNotificationEnabled
                             ? Icons.notifications_active
                             : Icons.notifications_off),
@@ -82,7 +70,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                         trailing: Switch(
                           value: isNotificationEnabled,
                           onChanged: _toggleNotifications,
-                          activeColor: Colors.blue,
+                          activeColor: Color.fromARGB(255, 2, 70, 125),
                         ),
                       ),
                       
@@ -90,7 +78,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                       
                       // Langue
                       ListTile(
-                        iconColor: Colors.blue,
+                        iconColor: Color.fromARGB(255, 2, 70, 125),
                         leading: const Icon(Icons.language),
                         title: const Text(
                           'Langue',
@@ -109,7 +97,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                       
                       // Politique de confidentialité
                       ListTile(
-                        iconColor: Colors.blue,
+                        iconColor: Color.fromARGB(255, 2, 70, 125),
                         leading: const Icon(Icons.privacy_tip),
                         title: const Text(
                           'Politique de confidentialité',
@@ -130,7 +118,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                       
                       // Mode sombre
                       ListTile(
-                        iconColor: Colors.blue,
+                        iconColor: Color.fromARGB(255, 2, 70, 125),
                         leading: Icon(
                           isDarkModeEnabled ? Icons.dark_mode : Icons.light_mode,
                         ),
@@ -144,7 +132,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                         trailing: Switch(
                           value: isDarkModeEnabled,
                           onChanged: _toggleDarkMode,
-                          activeColor: Colors.blue,
+                          activeColor: Color.fromARGB(255, 2, 70, 125),
                         ),
                       ),
                       
@@ -152,7 +140,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                       
                       // À propos
                       ListTile(
-                        iconColor: Colors.blue,
+                        iconColor: Color.fromARGB(255, 2, 70, 125),
                         leading: const Icon(Icons.info_outline),
                         title: const Text(
                           'À propos',
@@ -171,7 +159,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                       
                       // Aide et support
                       ListTile(
-                        iconColor: Colors.blue,
+                        iconColor: Color.fromARGB(255, 2, 70, 125),
                         leading: const Icon(Icons.help_outline),
                         title: const Text(
                           'Aide et support',

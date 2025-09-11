@@ -32,11 +32,12 @@ class _MainhomeScreenState extends State<MainhomeScreen> {
     return Scaffold(
       body: widgetOptions.elementAt(_selectedIndex),
       bottomNavigationBar: BottomNavigationBar(
+        backgroundColor: Colors.white,
         showSelectedLabels: true,
         showUnselectedLabels: true,
         type: BottomNavigationBarType.fixed,
         selectedItemColor: const Color.fromARGB(255, 2, 70, 125),
-        unselectedItemColor: Colors.blueGrey,
+        unselectedItemColor: Colors.black,
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Image.asset(
@@ -45,7 +46,7 @@ class _MainhomeScreenState extends State<MainhomeScreen> {
               height: 24,
               color: _selectedIndex == 0 
                   ? const Color.fromARGB(255, 2, 70, 125)
-                  : Colors.black38,
+                  : Colors.black,
             ),
             label: 'Home',
           ),
@@ -56,7 +57,7 @@ class _MainhomeScreenState extends State<MainhomeScreen> {
               height: 24,
               color: _selectedIndex == 1
                   ? const Color.fromARGB(255, 2, 70, 125)
-                  : Colors.black38,
+                  : Colors.black,
             ),
             label: 'Calendrier',
           ),
@@ -67,7 +68,7 @@ class _MainhomeScreenState extends State<MainhomeScreen> {
               height: 24,
               color: _selectedIndex == 2
                   ? const Color.fromARGB(255, 2, 70, 125)
-                  : Colors.black38,
+                  : Colors.black,
             ),
             label: 'Profil',
           ),
@@ -78,7 +79,7 @@ class _MainhomeScreenState extends State<MainhomeScreen> {
               height: 24,
               color: _selectedIndex == 3
                   ? const Color.fromARGB(255, 2, 70, 125)
-                  : Colors.black38,
+                  : Colors.black,
             ),
             label: 'Paramètres',
           ),
