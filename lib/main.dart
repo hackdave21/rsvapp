@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:rvsapp/onboarding_screen.dart';
+import 'package:rvsapp/features/presentation/pages/onboarding_screen.dart';
 
 void main() {
   runApp(const MyApp());

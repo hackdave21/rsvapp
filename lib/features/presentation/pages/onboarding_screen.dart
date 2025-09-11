@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:rvsapp/mainhome_screen.dart';
+import 'package:rvsapp/features/presentation/pages/mainhome_screen.dart';
 
 class OnboardingScreen extends StatelessWidget {
   const OnboardingScreen({super.key});

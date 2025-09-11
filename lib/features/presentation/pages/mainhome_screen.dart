@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:rvsapp/pages/calendar_screen.dart';
-import 'package:rvsapp/pages/home_screen.dart';
-import 'package:rvsapp/pages/profile_screen.dart';
-import 'package:rvsapp/pages/settings_screen.dart';
+import 'package:rvsapp/features/presentation/pages/screens/calendar_screen.dart';
+import 'package:rvsapp/features/presentation/pages/screens/home_screen.dart';
+import 'package:rvsapp/features/presentation/pages/screens/profile_screen.dart';
+import 'package:rvsapp/features/presentation/pages/screens/settings_screen.dart';
 
 class MainhomeScreen extends StatefulWidget {
   const MainhomeScreen({super.key});
