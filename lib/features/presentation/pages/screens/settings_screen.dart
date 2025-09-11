@@ -23,7 +23,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
         child: SingleChildScrollView(
           child: Column(
             children: <Widget>[
-              const SizedBox(height: 100),
+              const SizedBox(height: 30),
 
               // Titre de la page
               Text(
@@ -199,7 +199,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                           color: AppTheme.grey600,
                         ),
                         onTap: () {
-                          CustomSnackbar.showInfo(context, 'Page d\'aide');
+                          CustomSnackbar.showInfo(context, "Page d'aide");
                         },
                       ),
                     ],
