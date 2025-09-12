@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:rvsapp/core/themes/app_themes.dart';
 import 'package:rvsapp/core/themes/text_styles.dart';
-import 'package:rvsapp/features/presentation/pages/auth/registerpage.dart';
 import 'package:rvsapp/features/presentation/pages/mainhome_screen.dart';
+import 'package:rvsapp/features/presentation/pages/screens/home_screen.dart';
 import 'package:rvsapp/features/presentation/widgets/custom_snackbar.dart';
 import 'package:rvsapp/features/presentation/widgets/custom_text_field.dart';
 
@@ -158,7 +158,15 @@ class _LoginScreenState extends State<LoginScreen> {
                 SizedBox(
                   width: double.infinity,
                   child: ElevatedButton(
-                    onPressed: _isLoading ? null : _login,
+                    // onPressed: _isLoading ? null : _login,
+                    onPressed: () {
+                      Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const HomeScreen(),
+                          ),
+                        );
+                    },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: AppTheme.primaryColor,
                       foregroundColor: AppTheme.white,
@@ -228,7 +236,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => const RegisterScreen(),
+                            builder: (context) => const MainhomeScreen(),
                           ),
                         );
                       },

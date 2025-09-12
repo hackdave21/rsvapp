@@ -44,11 +44,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   // Données des catégories
   final List<Map<String, dynamic>> _categories = [
-    {
-      'icon': HeroIcons.home,
-      'title': 'Maisons',
-      'color': Colors.blue,
-    },
+    {'icon': HeroIcons.home, 'title': 'Maisons', 'color': Colors.blue},
     {
       'icon': HeroIcons.buildingOffice,
       'title': 'Appartements',
@@ -59,21 +55,13 @@ class _HomeScreenState extends State<HomeScreen> {
       'title': 'Commerce',
       'color': Colors.green,
     },
-    {
-      'icon': HeroIcons.mapPin,
-      'title': 'Terrains',
-      'color': Colors.purple,
-    },
+    {'icon': HeroIcons.mapPin, 'title': 'Terrains', 'color': Colors.purple},
     {
       'icon': HeroIcons.wrenchScrewdriver,
       'title': 'Rénovation',
       'color': Colors.red,
     },
-    {
-      'icon': HeroIcons.star,
-      'title': 'Premium',
-      'color': Colors.amber,
-    },
+    {'icon': HeroIcons.star, 'title': 'Premium', 'color': Colors.amber},
   ];
 
   String _getGreeting() {
@@ -93,7 +81,7 @@ class _HomeScreenState extends State<HomeScreen> {
       builder: (context, themeProvider, child) {
         final theme = Theme.of(context);
         final colorScheme = theme.colorScheme;
-        
+
         return Scaffold(
           backgroundColor: colorScheme.surface,
           appBar: AppBar(
@@ -197,7 +185,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           ),
                         ),
                         const SizedBox(height: 20),
-                        
+
                         // Barre de recherche
                         Container(
                           decoration: BoxDecoration(
@@ -255,9 +243,9 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                   ),
                 ),
-                
+
                 const SizedBox(height: 30),
-                
+
                 // Section des catégories
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -285,21 +273,22 @@ class _HomeScreenState extends State<HomeScreen> {
                     ],
                   ),
                 ),
-                
+
                 const SizedBox(height: 16),
-                
+
                 // Grille des catégories
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 20),
                   child: GridView.builder(
                     shrinkWrap: true,
                     physics: const NeverScrollableScrollPhysics(),
-                    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2,
-                      childAspectRatio: 1.2,
-                      crossAxisSpacing: 16,
-                      mainAxisSpacing: 16,
-                    ),
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: 2,
+                          childAspectRatio: 1.2,
+                          crossAxisSpacing: 16,
+                          mainAxisSpacing: 16,
+                        ),
                     itemCount: _categories.length,
                     itemBuilder: (context, index) {
                       final category = _categories[index];
@@ -314,9 +303,9 @@ class _HomeScreenState extends State<HomeScreen> {
                     },
                   ),
                 ),
-                
+
                 const SizedBox(height: 30),
-                
+
                 // Section des annonces récentes
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -344,9 +333,9 @@ class _HomeScreenState extends State<HomeScreen> {
                     ],
                   ),
                 ),
-                
+
                 const SizedBox(height: 16),
-                
+
                 // Carrousel des annonces
                 SizedBox(
                   height: 280,
@@ -389,12 +378,22 @@ class _HomeScreenState extends State<HomeScreen> {
                                 ),
                                 child: Stack(
                                   children: [
-                                    Center(
-                                      child: HeroIcon(
-                                        HeroIcons.photo,
-                                        size: 60,
-                                        color: colorScheme.onPrimaryContainer.withOpacity(0.5),
-                                      ),
+                                    Image.asset(
+                                      announcement['image'],
+                                      fit: BoxFit.cover,
+                                      width: double.infinity,
+                                      height: double.infinity,
+                                      errorBuilder:
+                                          (context, error, stackTrace) {
+                                            // Fallback si l'image ne charge pas
+                                            return HeroIcon(
+                                              HeroIcons.photo,
+                                              size: 60,
+                                              color: colorScheme
+                                                  .onPrimaryContainer
+                                                  .withOpacity(0.5),
+                                            );
+                                          },
                                     ),
                                     Positioned(
                                       top: 12,
@@ -406,7 +405,9 @@ class _HomeScreenState extends State<HomeScreen> {
                                           shape: BoxShape.circle,
                                           boxShadow: [
                                             BoxShadow(
-                                              color: Colors.black.withOpacity(0.1),
+                                              color: Colors.black.withOpacity(
+                                                0.1,
+                                              ),
                                               blurRadius: 4,
                                             ),
                                           ],
@@ -426,7 +427,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 ),
                               ),
                             ),
-                            
+
                             // Informations
                             Expanded(
                               flex: 2,
@@ -456,9 +457,11 @@ class _HomeScreenState extends State<HomeScreen> {
                                         Expanded(
                                           child: Text(
                                             announcement['location'],
-                                            style: TextStyles.bodySmall.copyWith(
-                                              color: colorScheme.onSurfaceVariant,
-                                            ),
+                                            style: TextStyles.bodySmall
+                                                .copyWith(
+                                                  color: colorScheme
+                                                      .onSurfaceVariant,
+                                                ),
                                             maxLines: 1,
                                             overflow: TextOverflow.ellipsis,
                                           ),
@@ -483,9 +486,9 @@ class _HomeScreenState extends State<HomeScreen> {
                     },
                   ),
                 ),
-                
+
                 const SizedBox(height: 16),
-                
+
                 // Indicateurs du carrousel
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -504,9 +507,9 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                   ),
                 ),
-                
+
                 const SizedBox(height: 30),
-                
+
                 // Section des statistiques
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -546,7 +549,9 @@ class _HomeScreenState extends State<HomeScreen> {
                         Container(
                           width: 1,
                           height: 40,
-                          color: colorScheme.onPrimaryContainer.withOpacity(0.3),
+                          color: colorScheme.onPrimaryContainer.withOpacity(
+                            0.3,
+                          ),
                         ),
                         Expanded(
                           child: Column(
@@ -572,7 +577,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                   ),
                 ),
-                
+
                 const SizedBox(height: 130),
               ],
             ),

@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class TextStyles {
-  // Police principale (Roboto)
+  // police principale (Roboto)
   static TextStyle get _baseStyle => GoogleFonts.roboto();
   
-  // Police secondaire (Poppins)
+  // police secondaire (Poppins)
   static TextStyle get _secondaryStyle => GoogleFonts.poppins();
   
-  // Display Styles (Poppins pour les titres importants)
+  // poppins pour les titres importants
   static TextStyle get displayLarge => _secondaryStyle.copyWith(
     fontSize: 57,
     fontWeight: FontWeight.w400,
@@ -30,7 +30,7 @@ class TextStyles {
     height: 1.22,
   );
   
-  // Headline Styles (Poppins pour les en-têtes)
+  //  pour les en-têtes
   static TextStyle get headlineLarge => _secondaryStyle.copyWith(
     fontSize: 32,
     fontWeight: FontWeight.w600,
@@ -52,7 +52,7 @@ class TextStyles {
     height: 1.33,
   );
   
-  // Title Styles (Poppins)
+  // pour les titre (Poppins)
   static TextStyle get titleLarge => _secondaryStyle.copyWith(
     fontSize: 22,
     fontWeight: FontWeight.w500,
@@ -74,7 +74,7 @@ class TextStyles {
     height: 1.43,
   );
   
-  // Body Styles (Roboto pour le contenu)
+  // roboto pour le contenu dans le body 
   static TextStyle get bodyLarge => _baseStyle.copyWith(
     fontSize: 16,
     fontWeight: FontWeight.w400,
@@ -96,7 +96,7 @@ class TextStyles {
     height: 1.33,
   );
   
-  // Label Styles (Roboto)
+  // roboto pour les labels des textfield
   static TextStyle get labelLarge => _baseStyle.copyWith(
     fontSize: 14,
     fontWeight: FontWeight.w500,
@@ -118,7 +118,7 @@ class TextStyles {
     height: 1.45,
   );
   
-  // Styles personnalisés
+  // styles personnalisés
   static TextStyle get caption => _baseStyle.copyWith(
     fontSize: 12,
     fontWeight: FontWeight.w400,
@@ -133,7 +133,7 @@ class TextStyles {
     height: 1.6,
   );
   
-  // Styles pour les boutons
+  // styles pour les boutons
   static TextStyle get buttonLarge => _baseStyle.copyWith(
     fontSize: 16,
     fontWeight: FontWeight.w600,
@@ -152,14 +152,14 @@ class TextStyles {
     letterSpacing: 0.4,
   );
   
-  // Styles pour les erreurs
+  // styles pour les erreurs
   static TextStyle get error => _baseStyle.copyWith(
     fontSize: 12,
     fontWeight: FontWeight.w400,
     letterSpacing: 0.4,
   );
   
-  // Styles pour les liens
+  // styles pour les liens avec roboto
   static TextStyle get link => _baseStyle.copyWith(
     fontSize: 14,
     fontWeight: FontWeight.w500,
@@ -167,7 +167,7 @@ class TextStyles {
     decoration: TextDecoration.underline,
   );
   
-  // Backward compatibility
+  // compatibilité
   static TextStyle get headline1 => displayLarge;
   static TextStyle get headline2 => displayMedium;
   static TextStyle get headline3 => displaySmall;

@@ -12,7 +12,7 @@ class LightTheme {
       cardColor: AppTheme.white,
       dividerColor: AppTheme.grey300,
       
-      // AppBar Theme
+      // theme de l'appbar
       appBarTheme: AppBarTheme(
         backgroundColor: AppTheme.primaryColor,
         foregroundColor: AppTheme.white,
@@ -21,7 +21,7 @@ class LightTheme {
         iconTheme: IconThemeData(color: AppTheme.white),
       ),
       
-      // Text Theme
+      // thème pour les textes
       textTheme: GoogleFonts.robotoTextTheme().copyWith(
         displayLarge: TextStyles.displayLarge.copyWith(color: AppTheme.grey900),
         displayMedium: TextStyles.displayMedium.copyWith(color: AppTheme.grey900),
@@ -40,7 +40,7 @@ class LightTheme {
         labelSmall: TextStyles.labelSmall.copyWith(color: AppTheme.grey600),
       ),
       
-      // Button Themes
+      // thème pour les boutons
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
           backgroundColor: AppTheme.primaryColor,
@@ -74,7 +74,7 @@ class LightTheme {
         ),
       ),
       
-      // Input Decoration Theme
+      //thème des input decoration
       inputDecorationTheme: InputDecorationTheme(
         filled: true,
         fillColor: AppTheme.grey100,
@@ -99,7 +99,7 @@ class LightTheme {
         labelStyle: TextStyles.bodyMedium.copyWith(color: AppTheme.grey700),
       ),
       
-      // Card Theme
+      // theme de la card
       cardTheme: CardThemeData(
         color: AppTheme.white,
         elevation: 2,
@@ -109,7 +109,7 @@ class LightTheme {
         margin: EdgeInsets.all(8),
       ),
       
-      // Bottom Navigation Bar Theme
+      //theme de Bottom Navigation Bar 
       bottomNavigationBarTheme: BottomNavigationBarThemeData(
         backgroundColor: AppTheme.white,
         selectedItemColor: AppTheme.primaryColor,

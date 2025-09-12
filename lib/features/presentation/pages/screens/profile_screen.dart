@@ -190,6 +190,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
         return Scaffold(
           backgroundColor: colorScheme.surface,
           appBar: AppBar(
+            automaticallyImplyLeading: false,
             title: Text(
               'Mon Profil',
               style: TextStyles.titleLarge.copyWith(
