@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:heroicons/heroicons.dart';
 import 'package:provider/provider.dart';
-import 'package:rvsapp/core/themes/text_styles.dart';
-import 'package:rvsapp/features/presentation/widgets/card_category.dart';
+import 'package:rvsapp/presentation/themes/text_styles.dart';
+import 'package:rvsapp/presentation/widgets/card_category.dart';
 import 'package:rvsapp/shared/providers/theme_provider.dart';
 
 class HomeScreen extends StatefulWidget {

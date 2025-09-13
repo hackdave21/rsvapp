@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:heroicons/heroicons.dart';
-import 'package:rvsapp/core/themes/text_styles.dart';
+import 'package:rvsapp/presentation/themes/text_styles.dart';
 
 class CategoryCard extends StatelessWidget {
   final HeroIcons icon;

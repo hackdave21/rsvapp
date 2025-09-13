@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:rvsapp/core/themes/dark_theme.dart';
-import 'package:rvsapp/core/themes/light_theme.dart';
+import 'package:rvsapp/presentation/themes/dark_theme.dart';
+import 'package:rvsapp/presentation/themes/light_theme.dart';
 
 class AppTheme {
   static ThemeData get lightTheme => LightTheme.theme;

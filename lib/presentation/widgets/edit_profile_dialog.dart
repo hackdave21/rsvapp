@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:rvsapp/core/themes/app_themes.dart';
-import 'package:rvsapp/core/themes/text_styles.dart';
-import 'package:rvsapp/features/presentation/widgets/custom_text_field.dart';
+import 'package:rvsapp/presentation/themes/app_themes.dart';
+import 'package:rvsapp/presentation/themes/text_styles.dart';
+import 'package:rvsapp/presentation/widgets/custom_text_field.dart';
 
 class EditProfileDialog extends StatefulWidget {
   final String currentName;

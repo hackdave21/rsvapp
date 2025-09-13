@@ -1,29 +1,38 @@
 import 'package:flutter/material.dart';
-import 'package:rvsapp/core/themes/app_themes.dart';
-import 'package:rvsapp/core/themes/text_styles.dart';
-import 'package:rvsapp/features/presentation/pages/mainhome_screen.dart';
-import 'package:rvsapp/features/presentation/pages/screens/home_screen.dart';
-import 'package:rvsapp/features/presentation/widgets/custom_snackbar.dart';
-import 'package:rvsapp/features/presentation/widgets/custom_text_field.dart';
+import 'package:rvsapp/presentation/themes/app_themes.dart';
+import 'package:rvsapp/presentation/themes/text_styles.dart';
+import 'package:rvsapp/presentation/pages/auth/loginpage.dart';
+import 'package:rvsapp/presentation/pages/mainhome_screen.dart';
+import 'package:rvsapp/presentation/widgets/custom_snackbar.dart';
+import 'package:rvsapp/presentation/widgets/custom_text_field.dart';
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
+class RegisterScreen extends StatefulWidget {
+  const RegisterScreen({super.key});
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  State<RegisterScreen> createState() => _RegisterScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _RegisterScreenState extends State<RegisterScreen> {
   final _formKey = GlobalKey<FormState>();
+  final _firstNameController = TextEditingController();
+  final _lastNameController = TextEditingController();
   final _emailController = TextEditingController();
+  final _phoneController = TextEditingController();
   final _passwordController = TextEditingController();
+  final _confirmPasswordController = TextEditingController();
   bool _isLoading = false;
   bool _obscurePassword = true;
+  bool _obscureConfirmPassword = true;
 
   @override
   void dispose() {
+    _firstNameController.dispose();
+    _lastNameController.dispose();
     _emailController.dispose();
+    _phoneController.dispose();
     _passwordController.dispose();
+    _confirmPasswordController.dispose();
     super.dispose();
   }
 
@@ -33,7 +42,13 @@ class _LoginScreenState extends State<LoginScreen> {
     });
   }
 
-  Future<void> _login() async {
+  void _toggleConfirmPasswordVisibility() {
+    setState(() {
+      _obscureConfirmPassword = !_obscureConfirmPassword;
+    });
+  }
+
+  Future<void> _register() async {
     if (_formKey.currentState!.validate()) {
       setState(() {
         _isLoading = true;
@@ -45,14 +60,13 @@ class _LoginScreenState extends State<LoginScreen> {
       setState(() {
         _isLoading = false;
       });
-
-      // Navigation vers l'écran principal
+      
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(builder: (context) => const MainhomeScreen()),
       );
 
-      CustomSnackbar.showSuccess(context, 'Connexion réussie!');
+      CustomSnackbar.showSuccess(context, 'Inscription réussie!');
     }
   }
 
@@ -68,22 +82,56 @@ class _LoginScreenState extends State<LoginScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const SizedBox(height: 40),
+                const SizedBox(height: 20),
                 // Titre
                 Text(
-                  'Connexion',
+                  'Inscription',
                   style: TextStyles.headlineLarge.copyWith(
                     color: AppTheme.primaryColor,
                   ),
                 ),
                 const SizedBox(height: 8),
                 Text(
-                  'Connectez-vous à votre compte',
+                  'Créez votre compte',
                   style: TextStyles.bodyLarge.copyWith(
                     color: AppTheme.grey600,
                   ),
                 ),
                 const SizedBox(height: 40),
+                // Prénom
+                CustomTextField(
+                  controller: _firstNameController,
+                  labelText: 'Prénom',
+                  hintText: 'Entrez votre prénom',
+                  prefixIcon: Icon(
+                    Icons.person_outline,
+                    color: AppTheme.grey500,
+                  ),
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Veuillez entrer votre prénom';
+                    }
+                    return null;
+                  },
+                ),
+                const SizedBox(height: 20),
+                // Nom
+                CustomTextField(
+                  controller: _lastNameController,
+                  labelText: 'Nom',
+                  hintText: 'Entrez votre nom',
+                  prefixIcon: Icon(
+                    Icons.person_outline,
+                    color: AppTheme.grey500,
+                  ),
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Veuillez entrer votre nom';
+                    }
+                    return null;
+                  },
+                ),
+                const SizedBox(height: 20),
                 // Email
                 CustomTextField(
                   controller: _emailController,
@@ -106,11 +154,23 @@ class _LoginScreenState extends State<LoginScreen> {
                   },
                 ),
                 const SizedBox(height: 20),
+                // Téléphone
+                CustomTextField(
+                  controller: _phoneController,
+                  labelText: 'Téléphone (optionnel)',
+                  hintText: 'Entrez votre numéro de téléphone',
+                  keyboardType: TextInputType.phone,
+                  prefixIcon: Icon(
+                    Icons.phone_outlined,
+                    color: AppTheme.grey500,
+                  ),
+                ),
+                const SizedBox(height: 20),
                 // Mot de passe
                 CustomTextField(
                   controller: _passwordController,
                   labelText: 'Mot de passe',
-                  hintText: 'Entrez votre mot de passe',
+                  hintText: 'Créez un mot de passe',
                   obscureText: _obscurePassword,
                   prefixIcon: Icon(
                     Icons.lock_outline,
@@ -119,7 +179,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   suffixIcon: IconButton(
                     icon: Icon(
                       _obscurePassword
-                           ? Icons.visibility_outlined
+                          ? Icons.visibility_outlined
                           : Icons.visibility_off_outlined,
                       color: AppTheme.grey500,
                     ),
@@ -127,7 +187,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                   validator: (value) {
                     if (value == null || value.isEmpty) {
-                      return 'Veuillez entrer votre mot de passe';
+                      return 'Veuillez créer un mot de passe';
                     }
                     if (value.length < 6) {
                       return 'Le mot de passe doit contenir au moins 6 caractères';
@@ -135,38 +195,42 @@ class _LoginScreenState extends State<LoginScreen> {
                     return null;
                   },
                 ),
-                const SizedBox(height: 16),
-                // Mot de passe oublié
-                Align(
-                  alignment: Alignment.centerRight,
-                  child: TextButton(
-                    onPressed: () {
-                      CustomSnackbar.showInfo(
-                          context, 'Fonctionnalité à venir');
-                    },
-                    child: Text(
-                      'Mot de passe oublié?',
-                      style: TextStyles.bodyMedium.copyWith(
-                        color: AppTheme.primaryColor,
-                        fontWeight: FontWeight.w500,
-                      ),
-                    ),
+                const SizedBox(height: 20),
+                // Confirmation du mot de passe
+                CustomTextField(
+                  controller: _confirmPasswordController,
+                  labelText: 'Confirmer le mot de passe',
+                  hintText: 'Confirmez votre mot de passe',
+                  obscureText: _obscureConfirmPassword,
+                  prefixIcon: Icon(
+                    Icons.lock_outline,
+                    color: AppTheme.grey500,
                   ),
+                  suffixIcon: IconButton(
+                    icon: Icon(
+                      _obscureConfirmPassword
+                          ? Icons.visibility_outlined
+                          : Icons.visibility_off_outlined,
+                      color: AppTheme.grey500,
+                    ),
+                    onPressed: _toggleConfirmPasswordVisibility,
+                  ),
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Veuillez confirmer votre mot de passe';
+                    }
+                    if (value != _passwordController.text) {
+                      return 'Les mots de passe ne correspondent pas';
+                    }
+                    return null;
+                  },
                 ),
                 const SizedBox(height: 30),
-                // Bouton de connexion
+                // Bouton d'inscription
                 SizedBox(
                   width: double.infinity,
                   child: ElevatedButton(
-                    // onPressed: _isLoading ? null : _login,
-                    onPressed: () {
-                      Navigator.pushReplacement(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => const MainhomeScreen(),
-                          ),
-                        );
-                    },
+                    onPressed: _isLoading ? null : _register,
                     style: ElevatedButton.styleFrom(
                       backgroundColor: AppTheme.primaryColor,
                       foregroundColor: AppTheme.white,
@@ -186,7 +250,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             ),
                           )
                         : Text(
-                            'Se connecter',
+                            "S'inscrire",
                             style: TextStyles.buttonLarge.copyWith(
                               color: AppTheme.white,
                             ),
@@ -194,54 +258,27 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                 ),
                 const SizedBox(height: 30),
-                // Séparateur
-                Row(
-                  children: [
-                    Expanded(
-                      child: Divider(
-                        color: AppTheme.grey300,
-                        thickness: 1,
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 16),
-                      child: Text(
-                        'Ou',
-                        style: TextStyles.bodyMedium.copyWith(
-                          color: AppTheme.grey500,
-                        ),
-                      ),
-                    ),
-                    Expanded(
-                      child: Divider(
-                        color: AppTheme.grey300,
-                        thickness: 1,
-                      ),
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 30),
-                // Lien vers l'inscription
+                // Lien vers la connexion
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      "Vous n'avez pas de compte? ",
+                      "Vous avez déjà un compte? ",
                       style: TextStyles.bodyMedium.copyWith(
                         color: AppTheme.grey600,
                       ),
                     ),
                     GestureDetector(
                       onTap: () {
-                        Navigator.push(
+                        Navigator.pushReplacement(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => const MainhomeScreen(),
+                            builder: (context) => const LoginScreen(),
                           ),
                         );
                       },
                       child: Text(
-                        "S'inscrire",
+                        "Se connecter",
                         style: TextStyles.bodyMedium.copyWith(
                           color: AppTheme.primaryColor,
                           fontWeight: FontWeight.w600,

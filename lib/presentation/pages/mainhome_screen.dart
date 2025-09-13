@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart'; // <-- nécessaire pour SystemUiOverlayStyle
-import 'package:rvsapp/core/themes/app_themes.dart';
-import 'package:rvsapp/features/presentation/pages/screens/calendar_screen.dart';
-import 'package:rvsapp/features/presentation/pages/screens/home_screen.dart';
-import 'package:rvsapp/features/presentation/pages/screens/profile_screen.dart';
-import 'package:rvsapp/features/presentation/pages/screens/settings_screen.dart';
+import 'package:rvsapp/presentation/themes/app_themes.dart';
+import 'package:rvsapp/presentation/pages/screens/calendar_screen.dart';
+import 'package:rvsapp/presentation/pages/screens/home_screen.dart';
+import 'package:rvsapp/presentation/pages/screens/profile_screen.dart';
+import 'package:rvsapp/presentation/pages/screens/settings_screen.dart';
 
 class MainhomeScreen extends StatefulWidget {
   const MainhomeScreen({super.key});

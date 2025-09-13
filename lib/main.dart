@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:rvsapp/core/themes/app_themes.dart';
+import 'package:rvsapp/presentation/themes/app_themes.dart';
 import 'package:provider/provider.dart';
-import 'package:rvsapp/features/presentation/pages/splash_screen.dart';
+import 'package:rvsapp/presentation/pages/splash_screen.dart';
 import 'package:rvsapp/shared/providers/theme_provider.dart';
 
 void main() async {

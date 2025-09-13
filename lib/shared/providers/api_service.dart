@@ -1,4 +1,4 @@
-// Dans votre provider/service qui gère l'API
+
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:rvsapp/core/constants/storage_constants.dart';

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:rvsapp/core/themes/app_themes.dart';
-import 'package:rvsapp/features/presentation/pages/onboarding_screen.dart';
+import 'package:rvsapp/presentation/themes/app_themes.dart';
+import 'package:rvsapp/presentation/pages/onboarding_screen.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
