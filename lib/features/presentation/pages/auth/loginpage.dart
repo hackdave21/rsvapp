@@ -119,7 +119,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   suffixIcon: IconButton(
                     icon: Icon(
                       _obscurePassword
-                          ? Icons.visibility_outlined
+                           ? Icons.visibility_outlined
                           : Icons.visibility_off_outlined,
                       color: AppTheme.grey500,
                     ),
@@ -163,7 +163,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       Navigator.pushReplacement(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => const HomeScreen(),
+                            builder: (context) => const MainhomeScreen(),
                           ),
                         );
                     },

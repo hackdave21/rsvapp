@@ -1,6 +1,6 @@
-/// Constantes pour le stockage local (SharedPreferences)
+
 class StorageConstants {
-  StorageConstants._(); // Constructeur privé pour éviter l'instanciation
+  StorageConstants._(); 
 
   // Authentification
   static const String authToken = 'auth_token';
@@ -22,8 +22,4 @@ class StorageConstants {
   // Cache
   static const String categoriesCache = 'categories_cache';
 
-  // Configuration
-  static const String apiBaseUrl = 'api_base_url';
-  static const String appVersion = 'app_version';
-  static const String buildNumber = 'build_number';
 }
