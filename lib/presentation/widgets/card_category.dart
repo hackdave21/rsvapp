@@ -33,11 +33,15 @@ class CategoryCard extends StatelessWidget {
       onTap: onTap,
       child: Container(
         decoration: BoxDecoration(
-          color: backgroundColor ?? colorScheme.surfaceContainerHighest,
+          color: backgroundColor ?? colorScheme.surface,
           borderRadius: BorderRadius.circular(16),
+          border: Border.all(
+            color: colorScheme.primary.withOpacity(0.3), 
+            width: 1.5,
+          ),
           boxShadow: [
             BoxShadow(
-              color: colorScheme.shadow.withOpacity(0.08),
+              color: colorScheme.shadow.withOpacity(0.1),
               blurRadius: 8,
               offset: const Offset(0, 2),
             ),

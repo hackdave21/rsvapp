@@ -107,6 +107,7 @@ class LightTheme {
           borderRadius: BorderRadius.circular(12),
         ),
         margin: EdgeInsets.all(8),
+        
       ),
       
       //theme de Bottom Navigation Bar 
@@ -117,7 +118,11 @@ class LightTheme {
         selectedLabelStyle: TextStyles.labelSmall,
         unselectedLabelStyle: TextStyles.labelSmall,
         type: BottomNavigationBarType.fixed,
-      ), colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.blue).copyWith(background: AppTheme.grey100),
+      ),
+       colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.blue).copyWith(
+        background: AppTheme.white,
+        surface: AppTheme.white,
+      ),
     );
   }
 }

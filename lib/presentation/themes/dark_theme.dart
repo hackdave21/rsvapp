@@ -98,9 +98,10 @@ class DarkTheme {
         unselectedLabelStyle: TextStyles.labelSmall,
         type: BottomNavigationBarType.fixed,
       ),
-      colorScheme: ColorScheme.fromSwatch(
-        primarySwatch: Colors.blue,
-      ).copyWith(background: AppTheme.grey800),
+     colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.blue).copyWith(
+  background: AppTheme.grey900, // ou votre couleur de fond sombre
+  surface: AppTheme.grey800,
+),
     );
   }
 }

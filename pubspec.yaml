@@ -45,6 +45,7 @@ dependencies:
   connectivity_plus: ^7.0.0
   internet_connection_checker: ^1.0.0+1
   dio: ^5.9.0
+  dartz: ^0.10.1
 
 dev_dependencies:
   flutter_test:

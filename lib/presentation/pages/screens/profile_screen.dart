@@ -279,12 +279,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   padding: const EdgeInsets.all(20),
                   decoration: BoxDecoration(
                     color: colorScheme.surfaceContainerHighest,
+                    border: Border.all(color: colorScheme.primary),
                     borderRadius: BorderRadius.circular(15),
                     boxShadow: [
                       BoxShadow(
                         color: colorScheme.shadow.withOpacity(0.1),
-                        blurRadius: 10,
-                        offset: const Offset(0, 4),
+                        // blurRadius: 10,
+                        //offset: const Offset(0, 4),
                       ),
                     ],
                   ),

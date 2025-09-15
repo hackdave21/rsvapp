@@ -1,8 +1,7 @@
+import 'package:dio/dio.dart';
 import 'package:equatable/equatable.dart';
 import 'package:rvsapp/core/errors/exceptions.dart';
 
-/// Classe abstraite pour représenter les échecs dans la couche Domain
-/// Les Failures sont des objets value qui encapsulent les erreurs de façon immutable
 abstract class Failure extends Equatable {
   final String message;
   final String code;
@@ -26,6 +25,48 @@ class GenericFailure extends Failure {
 class ServerFailure extends Failure {
   const ServerFailure([String message = 'Erreur du serveur. Veuillez réessayer plus tard.']) 
       : super(message, 'SERVER_ERROR');
+  
+  factory ServerFailure.fromDioException(DioException e) {
+    switch (e.type) {
+      case DioExceptionType.connectionTimeout:
+      case DioExceptionType.sendTimeout:
+      case DioExceptionType.receiveTimeout:
+        return const ServerFailure('Timeout de la connexion');
+      case DioExceptionType.badCertificate:
+        return const ServerFailure('Certificat invalide');
+      case DioExceptionType.badResponse:
+        return ServerFailure(_handleResponseError(e.response));
+      case DioExceptionType.cancel:
+        return const ServerFailure('Requête annulée');
+      case DioExceptionType.connectionError:
+        return const ServerFailure('Erreur de connexion');
+      case DioExceptionType.unknown:
+        return const ServerFailure('Erreur inconnue');
+    }
+  }
+  
+  static String _handleResponseError(Response? response) {
+    if (response == null) return 'Réponse serveur invalide';
+    
+    switch (response.statusCode) {
+      case 400:
+        return 'Requête invalide';
+      case 401:
+        return 'Non autorisé';
+      case 403:
+        return 'Accès refusé';
+      case 404:
+        return 'Ressource non trouvée';
+      case 500:
+        return 'Erreur interne du serveur';
+      case 502:
+        return 'Mauvais gateway';
+      case 503:
+        return 'Service indisponible';
+      default:
+        return 'Erreur serveur (${response.statusCode})';
+    }
+  }
 }
 
 /// echec client ( pour erreurs 400)
